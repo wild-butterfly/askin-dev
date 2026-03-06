@@ -1164,6 +1164,13 @@ body {
   object-fit: cover;
 }
 
+.modal-carousel > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;

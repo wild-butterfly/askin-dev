@@ -23,6 +23,13 @@ function useScrollReveal() {
 }
 
 /* ─── Types ─────────────────────────────────────────────── */
+type ProjectSlide = {
+  sectionTitle: string;
+  title: string;
+  desc: string;
+  bullets: string[];
+};
+
 type Project = {
   id: string;
   name: string;
@@ -37,10 +44,86 @@ type Project = {
   accentColor: string;
   images: string[]; // real screenshot paths
   placeholderSlides?: number; // how many placeholder screens to show
+  slides?: ProjectSlide[]; // per-slide content (matches images array)
 };
 
 /* ─── Data ──────────────────────────────────────────────── */
 const PROJECTS: Project[] = [
+  {
+    id: "flowody",
+    name: "Flowody",
+    category: "Workforce SaaS · In Development",
+    filterTags: ["React", "TypeScript", "Next.js"],
+    stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Express"],
+    desc: "Full-stack SaaS platform for workforce scheduling and workflow management — designed to eliminate manual processes and give managers real-time visibility across their teams.",
+    highlights: [
+      "Complex scheduling engine handling shift conflicts and availability rules",
+      "PostgreSQL with optimised queries for high-frequency reads",
+      "Role-based dashboard views for managers, staff, and admins",
+      "Real-time updates via WebSockets",
+    ],
+    href: "#",
+    live: false,
+    gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
+    accentColor: "#f472b6",
+    images: ["/calendar-pc-Photoroom.png", "/dash-laptop-Photoroom.png", "/dark-dash.png", "/dark-calendar.png", "/templates.png"],
+    slides: [
+      {
+        sectionTitle: "1. Scheduling & Workforce Coordination",
+        title: "Smart Team Scheduling",
+        desc: "Flowody provides a visual calendar that allows teams to organise work across multiple technicians in a single timeline. Managers can easily schedule jobs, track assignments, and see availability across the team. Each job appears as a coloured card within the timeline, making it easy to understand job status and progress at a glance.",
+        bullets: [
+          "Multi-technician timeline view",
+          "Visual job scheduling",
+          "Colour-coded task status indicators",
+          "Integrated job search and filtering",
+          "Real-time updates for team coordination",
+        ],
+      },
+      {
+        sectionTitle: "2. Operations Dashboard",
+        title: "Operational Insights at a Glance",
+        desc: "The Flowody dashboard provides a real-time overview of business activity and job progress. The interface was designed to give managers immediate visibility into the operational pipeline. Users can quickly see how work is progressing through each stage — and by consolidating this information into a single view, business owners can understand their workflow health without navigating through multiple screens.",
+        bullets: [
+          "Pending work",
+          "Quotes in preparation",
+          "Scheduled jobs",
+          "Active work in progress",
+          "Completed jobs",
+          "Invoices issued and payments received",
+        ],
+      },
+      {
+        sectionTitle: "3. Dark Mode Experience",
+        title: "Dark Mode Interface",
+        desc: "Flowody includes a fully designed dark mode interface to support extended usage and reduce eye strain. The dark theme maintains the same information hierarchy and functionality while adapting the colour palette for improved contrast in low-light environments. This design ensures that teams working long hours or in darker environments can comfortably manage their workflow without compromising usability.",
+        bullets: [],
+      },
+      {
+        sectionTitle: "4. Mobile Workflow Access",
+        title: "Mobile-Friendly Workflow Management",
+        desc: "Flowody is designed to work seamlessly across devices, enabling technicians and field staff to access their work from anywhere. This ensures that teams working in the field remain connected to the system without needing to return to the office.",
+        bullets: [
+          "View assigned jobs",
+          "Access customer information",
+          "Track task progress",
+          "Review schedules on the go",
+        ],
+      },
+      {
+        sectionTitle: "5. Customisable Quote & Invoice Templates",
+        title: "Customisable Business Documents",
+        desc: "Flowody includes a flexible document template system that allows businesses to generate professional quotes and invoices tailored to their brand. Through a visual editor, users can customise document layouts and instantly preview the final result. This feature ensures that all customer-facing documents maintain a consistent and professional appearance.",
+        bullets: [
+          "Live PDF preview",
+          "Custom brand colours and styling",
+          "Configurable document sections",
+          "Editable company and customer information",
+        ],
+      },
+    ],
+    placeholderSlides: 4,
+  },
   {
     id: "clevermode",
     name: "Clevermode",
@@ -70,32 +153,7 @@ const PROJECTS: Project[] = [
     images: [],
     placeholderSlides: 3,
   },
-  {
-    id: "flowody",
-    name: "Flowody",
-    category: "Workforce SaaS · In Development",
-    filterTags: ["React", "TypeScript", "Next.js"],
-    stack: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Express",
-    ],
-    desc: "Full-stack SaaS platform for workforce scheduling and workflow management — designed to eliminate manual processes and give managers real-time visibility across their teams.",
-    highlights: [
-      "Complex scheduling engine handling shift conflicts and availability rules",
-      "PostgreSQL with optimised queries for high-frequency reads",
-      "Role-based dashboard views for managers, staff, and admins",
-      "Real-time updates via WebSockets",
-    ],
-    href: "#",
-    live: false,
-    gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
-    accentColor: "#f472b6",
-    images: [],
-    placeholderSlides: 4,
-  },
+
   {
     id: "portfolio",
     name: "This Portfolio",
@@ -422,16 +480,32 @@ function ProjectModal({
 
         {/* Body */}
         <div className="modal-body">
-          <p className="modal-category">{project.category}</p>
-          <h2 className="modal-title">{project.name}</h2>
-          <p className="modal-desc">{project.desc}</p>
-
-          {project.highlights.length > 0 && (
-            <ul className="modal-highlights">
-              {project.highlights.map((h) => (
-                <li key={h}>{h}</li>
-              ))}
-            </ul>
+          {project.slides?.[slide] ? (
+            <>
+              <p className="modal-category">{project.slides[slide].sectionTitle}</p>
+              <h2 className="modal-title">{project.slides[slide].title}</h2>
+              <p className="modal-desc">{project.slides[slide].desc}</p>
+              {project.slides[slide].bullets.length > 0 && (
+                <ul className="modal-highlights">
+                  {project.slides[slide].bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ) : (
+            <>
+              <p className="modal-category">{project.category}</p>
+              <h2 className="modal-title">{project.name}</h2>
+              <p className="modal-desc">{project.desc}</p>
+              {project.highlights.length > 0 && (
+                <ul className="modal-highlights">
+                  {project.highlights.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              )}
+            </>
           )}
 
           <div className="modal-tags">
@@ -675,10 +749,19 @@ export default function Portfolio() {
                 aria-label={`View ${project.name}`}
               >
                 <div className="project-card-preview">
-                  <ProjectPlaceholder
-                    gradient={project.gradient}
-                    accent={project.accentColor}
-                  />
+                  {project.images[0] ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={project.images[0]}
+                      alt={`${project.name} preview`}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                  ) : (
+                    <ProjectPlaceholder
+                      gradient={project.gradient}
+                      accent={project.accentColor}
+                    />
+                  )}
                 </div>
                 <div className="project-card-info">
                   <span className="project-card-name">{project.name}</span>
