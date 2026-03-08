@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aşkın Fear — Developer Portfolio
+
+Live at **[askin-portfolio.vercel.app](https://askin-portfolio.vercel.app)**
+
+A hand-crafted, production-grade portfolio built with Next.js 16, TypeScript, and custom CSS. Designed to showcase full-stack SaaS work through interactive project case studies, scroll-reveal animations, and a clean dark-mode UI — with no animation libraries.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Custom CSS (no Tailwind, no UI libs) |
+| Font | Geist Sans / Geist Mono |
+| Deployment | Vercel (auto-deploy from `main`) |
+
+---
+
+## Features
+
+- **Project case studies** — per-slide content with image carousels, section titles, descriptions, and bullet points for each featured project
+- **Featured / Other Projects split** — recruiter-focused layout with a primary grid and a secondary grid for earlier work
+- **Scroll-reveal animations** — powered by `IntersectionObserver`, zero runtime dependencies
+- **Filterable project grid** — filter by tech stack tag with live count badges
+- **SEO metadata** — Open Graph, Twitter card, keywords, robots directives, and `metadataBase` configured for Vercel
+- **Animated background** — floating orbs and CSS grid overlay, CSS-only
+- **Fully responsive** — tested across mobile, tablet, and desktop breakpoints
+
+---
+
+## Projects Showcased
+
+### Featured
+| Project | Description | Stack |
+|---|---|---|
+| [Flowody](https://askin-portfolio.vercel.app) | Workforce SaaS — scheduling, invoicing, templates | React, TypeScript, Node.js, PostgreSQL |
+| [Clevermode](https://clevermode.com.au) | Production SaaS — printer registration, billing, AWS | Next.js, Firebase, Stripe, AWS |
+| This Portfolio | The site itself | Next.js 16, TypeScript, CSS |
+
+### Other
+Cocktail Finder, Gossip Girl API, Realm Portfolio
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+app/
+├── layout.tsx          # Root layout — SEO metadata, fonts
+├── page.tsx            # Redirects / → /portfolio
+├── portfolio/
+│   └── page.tsx        # Main portfolio page (all sections)
+└── globals.css         # All styles
+public/
+└── *.png               # Project screenshots and OG image
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Automatically deployed to Vercel on every push to `main`. No manual steps required.
 
-## Deploy on Vercel
+```bash
+git push origin main   # triggers deploy
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact
+
+**Aşkın Fear** — Full-Stack Developer, Melbourne AU
+
+- [askin-portfolio.vercel.app](https://askin-portfolio.vercel.app)
+- [linkedin.com/in/askin-fear](https://www.linkedin.com/in/askin-fear/)
+- [github.com/wild-butterfly](https://github.com/wild-butterfly)
+- askinfear@hotmail.com
