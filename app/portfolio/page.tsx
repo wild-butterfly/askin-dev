@@ -68,7 +68,13 @@ const PROJECTS: Project[] = [
     live: false,
     gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
     accentColor: "#f472b6",
-    images: ["/calendar-pc-Photoroom.png", "/dash-laptop-Photoroom.png", "/dark-dash.png", "/dark-calendar.png", "/templates.png"],
+    images: [
+      "/calendar-pc-Photoroom.png",
+      "/dash-laptop-Photoroom.png",
+      "/dark-dash.png",
+      "/dark-calendar.png",
+      "/templates.png",
+    ],
     slides: [
       {
         sectionTitle: "1. Scheduling & Workforce Coordination",
@@ -214,7 +220,7 @@ const PROJECTS: Project[] = [
     slides: [
       {
         sectionTitle: "1. Portfolio Experience",
-        title: "Next.js Portfolio with Project Storytelling",
+        title: "Next.js Portfolio with Case Studies",
         desc: "This portfolio is built with Next.js 16 and TypeScript to present production work, technical strengths, and contact pathways in a fast, polished single-site experience. It includes custom UI animation, project filtering, modal case studies, and SEO-focused metadata.",
         bullets: [
           "Built with Next.js 16 and TypeScript",
@@ -609,7 +615,9 @@ function ProjectModal({
         <div className="modal-body">
           {project.slides?.[slide] ? (
             <>
-              <p className="modal-category">{project.slides[slide].sectionTitle}</p>
+              <p className="modal-category">
+                {project.slides[slide].sectionTitle}
+              </p>
               <h2 className="modal-title">{project.slides[slide].title}</h2>
               <p className="modal-desc">{project.slides[slide].desc}</p>
               {project.slides[slide].bullets.length > 0 && (
@@ -905,7 +913,12 @@ export default function Portfolio() {
                     <img
                       src={project.images[0]}
                       alt={`${project.name} preview`}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
                     />
                   ) : (
                     <ProjectPlaceholder
@@ -927,10 +940,18 @@ export default function Portfolio() {
           {/* Other projects */}
           {otherProjects.length > 0 && (
             <>
-              <p data-reveal className="section-label" style={{ marginTop: "3.5rem" }}>
+              <p
+                data-reveal
+                className="section-label"
+                style={{ marginTop: "3.5rem" }}
+              >
                 Other Projects
               </p>
-              <div className="projects-grid projects-grid--other" data-reveal data-reveal-delay="100">
+              <div
+                className="projects-grid projects-grid--other"
+                data-reveal
+                data-reveal-delay="100"
+              >
                 {otherProjects.map((project, i) => (
                   <div
                     key={project.id}
@@ -1214,5 +1235,3 @@ export default function Portfolio() {
     </>
   );
 }
-
-
