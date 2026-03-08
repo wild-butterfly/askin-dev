@@ -952,6 +952,32 @@ body {
   animation: fadeSlideUp 0.5s ease both;
 }
 
+.projects-grid--other {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .projects-grid--other { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .projects-grid--other { grid-template-columns: 1fr; }
+}
+
+.project-card--other .project-card-preview {
+  aspect-ratio: 4 / 3;
+}
+
+.project-card--other .project-card-name {
+  font-size: 0.9rem;
+}
+
+.project-card--other .project-card-stack {
+  font-size: 0.72rem;
+}
+
 .project-card {
   background: var(--surface);
   border: 1px solid var(--border);

@@ -45,6 +45,8 @@ type Project = {
   images: string[]; // real screenshot paths
   placeholderSlides?: number; // how many placeholder screens to show
   slides?: ProjectSlide[]; // per-slide content (matches images array)
+  featured: boolean;
+  github?: string;
 };
 
 /* ─── Data ──────────────────────────────────────────────── */
@@ -123,14 +125,15 @@ const PROJECTS: Project[] = [
       },
     ],
     placeholderSlides: 4,
+    featured: true,
   },
   {
     id: "clevermode",
     name: "Clevermode",
     category: "SaaS Platform · Live",
-    filterTags: ["React", "JavaScript"],
+    filterTags: ["Next.js", "JavaScript"],
     stack: [
-      "React",
+      "Next.js",
       "JavaScript",
       "Node.js",
       "Express",
@@ -146,12 +149,47 @@ const PROJECTS: Project[] = [
       "Mobile-first interfaces built for field technicians",
       "REST APIs built with Node.js and Express",
     ],
-    href: "https://askin-workspace.vercel.app",
+    href: "https://clevermode.com.au",
     live: true,
     gradient: "linear-gradient(135deg, #1e1040 0%, #3b1d8a 50%, #6d28d9 100%)",
     accentColor: "#a78bfa",
-    images: [],
-    placeholderSlides: 3,
+    images: ["/clevermode.png", "/cleverlogin.png", "/cleverconvert.png"],
+    slides: [
+      {
+        sectionTitle: "1. Main Platform",
+        title: "Clevermode Dashboard",
+        desc: "Clevermode is a production SaaS platform built with Next.js to support Clevermode printer customers. The main page gives users access to the platform workflow, account tools, and printer-related actions from a single interface.",
+        bullets: [
+          "Next.js frontend for the customer platform",
+          "Central dashboard for printer users",
+          "Connected to Node.js and Express APIs",
+          "Firebase-backed data and authentication flow",
+          "SEO metadata updates and roadmap planning",
+        ],
+      },
+      {
+        sectionTitle: "2. Login, Registration & Membership",
+        title: "Customer Onboarding and Billing",
+        desc: "This page handles customer login and onboarding. Customers register their printer to start their membership, pay through Stripe, and access the Clevermode platform. Clevermode also includes an admin panel used to manage Firebase data and customer records.",
+        bullets: [
+          "Customer login and account access",
+          "Printer registration during signup",
+          "Stripe payment flow for membership",
+          "Admin panel for managing Firebase",
+        ],
+      },
+      {
+        sectionTitle: "3. Image Conversion",
+        title: "Convert Images to Printer-Ready PCX",
+        desc: "The convert page allows users to upload artwork and convert image files to PCX format, which Clevermode printers support. This makes it easier for customers to prepare compatible files before sending them to print.",
+        bullets: [
+          "Uploads image files for conversion",
+          "Converts assets into PCX format",
+          "Prepared specifically for Clevermode printers",
+        ],
+      },
+    ],
+    featured: true,
   },
 
   {
@@ -160,19 +198,108 @@ const PROJECTS: Project[] = [
     category: "Personal Site",
     filterTags: ["React", "TypeScript", "Next.js"],
     stack: ["Next.js 16", "TypeScript", "CSS", "Geist Font"],
-    desc: "Hand-crafted portfolio with a sunset-purple theme, scroll-reveal animations powered by IntersectionObserver, and zero runtime dependencies beyond React.",
+    desc: "Hand-crafted portfolio built with Next.js 16, TypeScript, and custom CSS, with SEO metadata, scroll-reveal motion, and a filterable project showcase.",
     highlights: [
       "Custom scroll-reveal system — no Framer Motion or GSAP",
       "Animated floating orbs + CSS grid overlay for the background",
       "Filterable project grid with modal detail view",
+      "SEO metadata configured for portfolio discoverability",
       "Deployed on Vercel with automatic CI/CD from GitHub",
     ],
     href: "https://askin-workspace.vercel.app",
     live: true,
     gradient: "linear-gradient(135deg, #1a1200 0%, #92400e 50%, #f97316 100%)",
     accentColor: "#fb923c",
-    images: [],
-    placeholderSlides: 2,
+    images: ["/askindev.png"],
+    slides: [
+      {
+        sectionTitle: "1. Portfolio Experience",
+        title: "Next.js Portfolio with Project Storytelling",
+        desc: "This portfolio is built with Next.js 16 and TypeScript to present production work, technical strengths, and contact pathways in a fast, polished single-site experience. It includes custom UI animation, project filtering, modal case studies, and SEO-focused metadata.",
+        bullets: [
+          "Built with Next.js 16 and TypeScript",
+          "Custom CSS visuals and scroll-reveal interactions",
+          "Filterable projects with modal case-study views",
+          "SEO metadata included for search visibility",
+        ],
+      },
+    ],
+    featured: true,
+  },
+
+  {
+    id: "cocktail-finder",
+    name: "Cocktail Finder",
+    category: "API Project",
+    filterTags: ["JavaScript"],
+    stack: ["JavaScript", "REST APIs", "HTML5 / CSS3"],
+    desc: "A simple web app that lets users search cocktail recipes by ingredient using a public cocktail API.",
+    highlights: [
+      "Ingredient-based search against a public REST API",
+      "Dynamic recipe results rendered from JSON responses",
+      "Clean UI built with vanilla JavaScript and CSS",
+    ],
+    href: "#",
+    live: false,
+    github: "https://github.com/wild-butterfly/cocktailfinder",
+    gradient: "linear-gradient(135deg, #0a1a2e 0%, #0e4d6b 50%, #0891b2 100%)",
+    accentColor: "#22d3ee",
+    images: ["/cocktail.png"],
+    featured: false,
+  },
+
+  {
+    id: "gossip-girl-api",
+    name: "Gossip Girl API",
+    category: "Backend · REST API",
+    filterTags: ["JavaScript"],
+    stack: ["HTML", "CSS", "JavaScript", "MySQL"],
+    desc: "REST API example project demonstrating backend architecture — CRUD endpoints, route handling, and structured JSON responses.",
+    highlights: [
+      "RESTful endpoints with Express route handling",
+      "Structured JSON response formatting",
+      "Demonstrates clean backend architecture patterns",
+    ],
+    href: "#",
+    live: false,
+    github: "https://github.com/wild-butterfly/gossipgirlAPI",
+    gradient: "linear-gradient(135deg, #1a0a1e 0%, #6b0e4d 50%, #c026d3 100%)",
+    accentColor: "#e879f9",
+    images: ["/gossipgirl.png"],
+    featured: false,
+  },
+
+  {
+    id: "realm-portfolio",
+    name: "Realm Portfolio",
+    category: "Frontend · Personal Site",
+    filterTags: ["React", "JavaScript"],
+    stack: ["React", "Vite", "Tailwind CSS", "React Router", "React Icons"],
+    desc: "A sci-fi-inspired interactive developer portfolio built with React, Vite, and Tailwind CSS, designed as a small realm with animated transitions and a game-like experience.",
+    highlights: [
+      "Portal intro screen with custom sound and radial animation",
+      "Animated realm menu with builds, skills, and developer sections",
+      "Glow-based sci-fi UI with responsive layout across devices",
+    ],
+    href: "https://wild-butterfly.github.io/realm-portfolio/",
+    live: true,
+    gradient: "linear-gradient(135deg, #0a1a0e 0%, #14532d 50%, #16a34a 100%)",
+    accentColor: "#4ade80",
+    images: ["/realmportfolio.png"],
+    slides: [
+      {
+        sectionTitle: "1. Sci-Fi Portfolio Experience",
+        title: "Interactive Realm Portfolio",
+        desc: "Realm Portfolio is a sci-fi-inspired interactive developer portfolio built with React, Vite, and Tailwind CSS. Instead of a traditional static site, it creates a small realm with animated transitions, glowing UI, and a game-like browsing experience.",
+        bullets: [
+          "Portal intro screen with custom sound and radial animation",
+          "Animated Realm menu with Builds, Skills, and About sections",
+          "Developer card with stats, skills, and profile photo",
+          "Hosted on GitHub Pages",
+        ],
+      },
+    ],
+    featured: false,
   },
 ];
 
@@ -524,7 +651,16 @@ function ProjectModal({
                 rel="noopener noreferrer"
                 className="btn-view-site"
               >
-                ↗ View Live Site
+                View Live Site
+              </a>
+            ) : project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-view-site"
+              >
+                GitHub
               </a>
             ) : (
               <span
@@ -533,6 +669,17 @@ function ProjectModal({
               >
                 In Development
               </span>
+            )}
+            {project.github && project.live && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{ fontSize: "0.88rem" }}
+              >
+                GitHub
+              </a>
             )}
             <button
               className="btn-ghost"
@@ -584,10 +731,13 @@ export default function Portfolio() {
   // Project filter
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredProjects =
+  const filtered =
     activeFilter === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.filterTags.includes(activeFilter));
+
+  const featuredProjects = filtered.filter((p) => p.featured);
+  const otherProjects = filtered.filter((p) => !p.featured);
 
   // Modal
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -734,8 +884,9 @@ export default function Portfolio() {
             </div>
           </div>
 
+          {/* Featured projects */}
           <div className="projects-grid" data-reveal data-reveal-delay="200">
-            {filteredProjects.map((project, i) => (
+            {featuredProjects.map((project, i) => (
               <div
                 key={project.id}
                 className="project-card"
@@ -772,6 +923,58 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
+
+          {/* Other projects */}
+          {otherProjects.length > 0 && (
+            <>
+              <p data-reveal className="section-label" style={{ marginTop: "3.5rem" }}>
+                Other Projects
+              </p>
+              <div className="projects-grid projects-grid--other" data-reveal data-reveal-delay="100">
+                {otherProjects.map((project, i) => (
+                  <div
+                    key={project.id}
+                    className="project-card project-card--other"
+                    style={{ animationDelay: `${i * 80}ms` }}
+                    onClick={() => setSelectedProject(project)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" && setSelectedProject(project)
+                    }
+                    aria-label={`View ${project.name}`}
+                  >
+                    <div className="project-card-preview">
+                      {project.images[0] ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={project.images[0]}
+                          alt={`${project.name} preview`}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+                      ) : (
+                        <ProjectPlaceholder
+                          gradient={project.gradient}
+                          accent={project.accentColor}
+                        />
+                      )}
+                    </div>
+                    <div className="project-card-info">
+                      <span className="project-card-name">{project.name}</span>
+                      <span className="project-card-stack">
+                        {project.stack.slice(0, 3).join(" / ")}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* ── STACK ───────────────────────────────── */}
@@ -795,6 +998,7 @@ export default function Portfolio() {
                   "JavaScript (ES6+)",
                   "Tailwind CSS",
                   "HTML5 / CSS3",
+                  "SEO / Metadata",
                 ],
               },
               {
@@ -1010,3 +1214,5 @@ export default function Portfolio() {
     </>
   );
 }
+
+
