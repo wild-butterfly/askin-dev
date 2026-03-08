@@ -159,7 +159,7 @@ const PROJECTS: Project[] = [
     live: true,
     gradient: "linear-gradient(135deg, #1e1040 0%, #3b1d8a 50%, #6d28d9 100%)",
     accentColor: "#a78bfa",
-    images: ["/clevermode.png", "/cleverlogin.png", "/cleverconvert.png"],
+    images: ["/clevermode.png", "/cleverlogin.png", "/cleverconvert.png", "/clevermodeAWS.png"],
     slides: [
       {
         sectionTitle: "1. Main Platform",
@@ -192,6 +192,20 @@ const PROJECTS: Project[] = [
           "Uploads image files for conversion",
           "Converts assets into PCX format",
           "Prepared specifically for Clevermode printers",
+        ],
+      },
+      {
+        sectionTitle: "4. Infrastructure & Deployment",
+        title: "Hosted on AWS — Production-Grade Infrastructure",
+        desc: "Clevermode is deployed on AWS using a production-grade infrastructure stack. The architecture is designed for reliability, security, and scalability — ensuring the platform remains available and performant for all active customers.",
+        bullets: [
+          "EC2 — application server hosting",
+          "Elastic Beanstalk — managed app deployment and scaling",
+          "S3 — static asset and file storage",
+          "CloudFront — global CDN for fast content delivery",
+          "Route 53 — DNS management and domain routing",
+          "VPC — isolated network with security group controls",
+          "AWS Certificate Manager — SSL/TLS certificate provisioning",
         ],
       },
     ],
@@ -532,7 +546,7 @@ function ProjectModal({
   const [slide, setSlide] = useState(0);
   const hasImages = project.images.length > 0;
   const slideCount = hasImages
-    ? project.images.length
+    ? Math.max(project.images.length, project.slides?.length ?? 0)
     : (project.placeholderSlides ?? 1);
 
   const prev = () => setSlide((s) => (s === 0 ? slideCount - 1 : s - 1));
