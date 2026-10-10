@@ -35,12 +35,15 @@ A hand-crafted, production-grade portfolio built with Next.js 16, TypeScript, an
 ### Featured
 | Project | Description | Stack |
 |---|---|---|
-| [Flowody](https://askin-portfolio.vercel.app) | Workforce SaaS — scheduling, invoicing, templates | React, TypeScript, Node.js, PostgreSQL |
+| [Flowody](https://flowody.com) | Job management — scheduling, quotes, invoices | React, TypeScript, Node.js, PostgreSQL |
+| [Flowody Mobile](https://flowody.com) | Field jobs, check-in and labour records | React Native, Expo, TypeScript |
+| [Movivate](https://movivate.com) | Home workout website and mobile app | Next.js, React Native, Expo, TypeScript |
+| [Flowody Software](https://flowodysoftware.com) | Studio services, case studies and enquiries | Next.js, TypeScript, Express, PostgreSQL |
 | [Clevermode](https://clevermode.com.au) | Production SaaS — printer registration, billing, AWS | Next.js, Firebase, Stripe, AWS |
-| This Portfolio | The site itself | Next.js 16, TypeScript, CSS |
+
 
 ### Other
-Cocktail Finder, Gossip Girl API, Realm Portfolio
+This Portfolio, Cocktail Finder, Gossip Girl API, Realm Portfolio
 
 ---
 
@@ -82,9 +85,13 @@ git push origin main   # triggers deploy
 
 ## Contact
 
-**Aşkın Fear** — Full-Stack Developer, Melbourne AU
+**Aşkın Fear** — Full-Stack Developer & Founder of Flowody Software, Melbourne AU
 
 - [askin-portfolio.vercel.app](https://askin-portfolio.vercel.app)
 - [linkedin.com/in/askin-fear](https://www.linkedin.com/in/askin-fear/)
 - [github.com/wild-butterfly](https://github.com/wild-butterfly)
 - askinfear@hotmail.com
+
+## Public repository scope
+
+This repository contains the public portfolio frontend, intended project screenshots and the approved founder portrait. Product backend code, customer data and deployment credentials belong in their separate repositories or secret stores. Environment files and local Vercel configuration are ignored.

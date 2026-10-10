@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://askin-workspace.vercel.app";
+const SITE_URL = "https://askin-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   title: "Aşkın Fear — Full-Stack Developer | Melbourne, Australia",
   description:
-    "Full-stack developer based in Melbourne, Australia. Specialising in React, Next.js, Node.js, TypeScript, PostgreSQL, and cloud infrastructure. Building production SaaS platforms from front-end to deployment.",
+    "Aşkın Fear, full-stack developer and founder of Flowody Software in Melbourne. Building websites, React Native mobile apps and business platforms, including Flowody, Movivate and Clevermode.",
 
   keywords: [
     "Full Stack Developer Australia",
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
   creator: "Aşkın Fear",
 
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
 
   openGraph: {
     type: "website",

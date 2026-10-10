@@ -1343,3 +1343,7 @@ body {
   color: var(--accent-light);
 }
 
+
+.founder-portrait { display: block; width: min(100%, 400px); height: auto; border-radius: 20px; border: 1px solid var(--border); }
+.project-card-preview--mobile { background: linear-gradient(135deg, #163329, #596957); }
+.modal-carousel--mobile > img { object-fit: contain; }

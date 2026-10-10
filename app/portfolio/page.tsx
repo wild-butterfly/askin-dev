@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /* ─── Scroll reveal ─────────────────────────────────────── */
@@ -54,22 +56,22 @@ const PROJECTS: Project[] = [
   {
     id: "flowody",
     name: "Flowody",
-    category: "Workforce SaaS · In Development",
-    filterTags: ["React", "TypeScript", "Next.js"],
+    category: "Job Management · Web Platform",
+    filterTags: ["React", "TypeScript"],
     stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Express"],
-    desc: "Full-stack SaaS platform for workforce scheduling and workflow management — designed to eliminate manual processes and give managers real-time visibility across their teams.",
+    desc: "Job management platform for service businesses, bringing scheduling, quotes, customer records, job tracking and invoices into one connected workspace.",
     highlights: [
-      "Complex scheduling engine handling shift conflicts and availability rules",
-      "PostgreSQL with optimised queries for high-frequency reads",
+      "Shared calendar for job scheduling and team assignments",
+      "Customer records, quotes and invoices connected to each job",
       "Role-based dashboard views for managers, staff, and admins",
-      "Real-time updates via WebSockets",
+      "Shared backend connecting the web platform and field app",
     ],
-    href: "#",
-    live: false,
+    href: "https://flowody.com",
+    live: true,
     gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
     accentColor: "#f472b6",
     images: [
-      "/calendar-pc-Photoroom.png",
+      "/projects/flowody-calendar.png",
       "/dash-laptop-Photoroom.png",
       "/dark-dash.png",
       "/dark-calendar.png",
@@ -147,7 +149,7 @@ const PROJECTS: Project[] = [
       "Stripe",
       "AWS",
     ],
-    desc: "Production SaaS platform powering printer registration, customer accounts, and subscription billing for A1 Testing & Tagging — supporting 200+ active staff and customers.",
+    desc: "A Flowody Software product for testing and tagging, with a website, printer registration, customer accounts, subscription billing and reporting tools.",
     highlights: [
       "Firebase Authentication with role-based access control for staff and customers",
       "Stripe payments and subscription management integrated end-to-end",
@@ -213,6 +215,62 @@ const PROJECTS: Project[] = [
   },
 
   {
+    id: "flowody-mobile",
+    name: "Flowody Mobile",
+    category: "Field Team App · iOS & Android",
+    filterTags: ["React Native", "TypeScript"],
+    stack: ["React Native", "Expo", "TypeScript", "Node.js", "PostgreSQL"],
+    desc: "The companion app to Flowody, helping tradespeople access assigned jobs and record work from the field through the same backend as the web platform.",
+    highlights: ["Assigned jobs and job information on a phone", "Check-in and check-out workflows", "Labour records and timesheets", "Shared Flowody account and job data"],
+    href: "https://flowody.com",
+    live: true,
+    gradient: "linear-gradient(135deg, #172c24, #0a5a45)",
+    accentColor: "#70d9ad",
+    images: ["/projects/flowody-mobile-timesheet.png"],
+    slides: [{
+      sectionTitle: "Field Workflows · Interface Preview",
+      title: "Flowody in the Field",
+      desc: "A React Native and Expo app for iOS and Android that connects field teams to the Flowody platform. This timesheet design preview shows how daily labour entries and approval status are organised on a phone.",
+      bullets: ["Assigned jobs and check-in and check-out", "Labour records and timesheets", "Secure session storage", "Connected to the existing API and PostgreSQL database"],
+    }],
+    featured: true,
+  },
+  {
+    id: "movivate",
+    name: "Movivate",
+    category: "Home Workouts · Website & Mobile App",
+    filterTags: ["React Native", "TypeScript", "Next.js"],
+    stack: ["React Native", "Expo", "TypeScript", "Next.js", "Node.js", "PostgreSQL"],
+    desc: "A connected home workout product with a website and iOS and Android app, exercise demonstrations, custom programs and a guided workout player.",
+    highlights: ["Animated exercise demonstrations and form guidance", "Custom programs with sets, reps, timers and rest periods", "Guided workout sessions, summaries and streaks", "A responsive product website with pricing and support"],
+    href: "https://movivate.com",
+    live: true,
+    gradient: "linear-gradient(135deg, #102c3b, #17506e)",
+    accentColor: "#1cbfc4",
+    images: ["/projects/movivate-website.png", "/projects/movivate-mobile-program.png"],
+    slides: [
+      { sectionTitle: "1. Product Website", title: "A Clear Introduction to Home Workouts", desc: "The Movivate website introduces the mobile app, guided exercises and custom programs. It connects product features, pricing, app downloads and support in a consistent visual identity.", bullets: ["Responsive Next.js website", "Exercise player preview and feature sections", "Pricing, FAQs and support", "Connected website and mobile branding"] },
+      { sectionTitle: "2. iOS & Android App", title: "Guided Training at Home", desc: "The mobile app helps users explore exercises and follow programs suited to their equipment. Users can build custom routines, follow a workout player and review completed sessions.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] },
+    ],
+    featured: true,
+  },
+  {
+    id: "flowody-software",
+    name: "Flowody Software",
+    category: "My Studio · Company Website",
+    filterTags: ["Next.js", "TypeScript"],
+    stack: ["Next.js", "TypeScript", "Node.js", "Express", "PostgreSQL"],
+    desc: "The website for my software studio, bringing services, product case studies and project enquiries together in a responsive, accessible site.",
+    highlights: ["Service pages and product case studies", "Responsive layouts with real product screenshots", "Validated proposal enquiry form and Node.js API", "Static frontend deployed on Cloudflare"],
+    href: "https://flowodysoftware.com",
+    live: true,
+    gradient: "linear-gradient(135deg, #0b2a20, #0a5a45)",
+    accentColor: "#c4d99d",
+    images: ["/projects/flowody-software.png"],
+    featured: true,
+  },
+
+  {
     id: "portfolio",
     name: "This Portfolio",
     category: "Personal Site",
@@ -245,7 +303,8 @@ const PROJECTS: Project[] = [
         ],
       },
     ],
-    featured: true,
+    github: "https://github.com/wild-butterfly/askin-dev",
+    featured: false,
   },
 
   {
@@ -579,7 +638,7 @@ function ProjectModal({
         </button>
 
         {/* Carousel */}
-        <div className="modal-carousel">
+        <div className={`modal-carousel${project.id === "flowody-mobile" || (project.id === "movivate" && slide === 1) ? " modal-carousel--mobile" : ""}`}>
           {hasImages ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -784,9 +843,9 @@ export default function Portfolio() {
 
       {/* ── NAV ─────────────────────────────────── */}
       <nav className="nav">
-        <a href="/" className="nav-logo">
+        <Link href="/" className="nav-logo">
           askin<em>.dev</em>
-        </a>
+        </Link>
         <ul className="nav-links">
           <li>
             <a href="#work">Work</a>
@@ -814,7 +873,7 @@ export default function Portfolio() {
           </div>
 
           <span className="hero-role">
-            Full-Stack Developer · Melbourne, AU
+            Full-Stack Developer & Studio Founder · Melbourne, AU
           </span>
 
           <div onMouseEnter={startHover} onMouseLeave={endHover}>
@@ -824,8 +883,8 @@ export default function Portfolio() {
           <h1 className="hero-title">Aşkın Fear</h1>
 
           <p className="hero-sub">
-            I build production-ready SaaS products — from billing systems and
-            REST APIs to polished interfaces. End-to-end, start to ship.
+            I’m a mechanical engineer turned full-stack developer and the founder of Flowody Software.
+            I build websites, mobile apps and business platforms — from the first interface to the backend and deployment.
           </p>
 
           <div className="hero-actions">
@@ -922,7 +981,7 @@ export default function Portfolio() {
                 }
                 aria-label={`View ${project.name}`}
               >
-                <div className="project-card-preview">
+                <div className={`project-card-preview${project.id === "flowody-mobile" ? " project-card-preview--mobile" : ""}`}>
                   {project.images[0] ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -931,7 +990,7 @@ export default function Portfolio() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: project.id === "flowody-mobile" ? "contain" : "cover",
                         display: "block",
                       }}
                     />
@@ -980,7 +1039,7 @@ export default function Portfolio() {
                     }
                     aria-label={`View ${project.name}`}
                   >
-                    <div className="project-card-preview">
+                    <div className={`project-card-preview${project.id === "flowody-mobile" ? " project-card-preview--mobile" : ""}`}>
                       {project.images[0] ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -1029,6 +1088,7 @@ export default function Portfolio() {
                 label: "Frontend",
                 skills: [
                   "React",
+                  "React Native / Expo",
                   "TypeScript",
                   "Next.js",
                   "JavaScript (ES6+)",
@@ -1115,6 +1175,7 @@ export default function Portfolio() {
         <section className="section" id="about">
           <div className="about-grid">
             <div className="about-left">
+              <Image src="/team/askin-fear.webp" alt="Aşkın Fear, founder and full-stack developer, in a charcoal blazer" width={1000} height={1250} sizes="(max-width: 820px) 85vw, 400px" className="founder-portrait" />
               <p data-reveal className="section-label">
                 About
               </p>
@@ -1134,9 +1195,9 @@ export default function Portfolio() {
                 architecture, clean execution, and maintainable code.
               </p>
               <p data-reveal data-reveal-delay="50" className="about-bio">
-                I’m currently shipping Clevermode in production and building
-                Flowody, a work management SaaS, with end-to-end ownership from
-                implementation to usability and performance.
+                I founded Flowody Software, where I build and maintain Flowody for job management,
+                Movivate for home workouts and Clevermode for testing and tagging. My work spans
+                web interfaces, native mobile apps, APIs, databases and deployment.
               </p>
 
               <div
@@ -1145,6 +1206,11 @@ export default function Portfolio() {
                 className="about-credentials"
               >
                 {[
+                  {
+                    role: "Founder & Developer",
+                    place: "Flowody Software",
+                    year: "2026 –",
+                  },
                   {
                     role: "Full-Stack Developer",
                     place: "A1 Testing & Tagging",
@@ -1181,6 +1247,7 @@ export default function Portfolio() {
               >
                 Full profile on LinkedIn ↗
               </a>
+              <a href="https://flowodysoftware.com" target="_blank" rel="noopener noreferrer" className="about-resume-link">Visit my software studio ↗</a>
             </div>
           </div>
         </section>
@@ -1200,6 +1267,7 @@ export default function Portfolio() {
               conversations.
             </p>
             <div data-reveal data-reveal-delay="200" className="hero-actions">
+              <a href="https://flowodysoftware.com/contact" className="btn-primary" target="_blank" rel="noopener noreferrer">Discuss a studio project ↗</a>
               <a href="mailto:askinfear@hotmail.com" className="btn-primary">
                 askinfear@hotmail.com
               </a>
