@@ -237,21 +237,34 @@ const PROJECTS: Project[] = [
   },
   {
     id: "movivate",
-    name: "Movivate",
-    category: "Home Workouts · Website & Mobile App",
-    filterTags: ["React Native", "TypeScript", "Next.js"],
-    stack: ["React Native", "Expo", "TypeScript", "Next.js", "Node.js", "PostgreSQL"],
-    desc: "A connected home workout product with a website and iOS and Android app, exercise demonstrations, custom programs and a guided workout player.",
-    highlights: ["Animated exercise demonstrations and form guidance", "Custom programs with sets, reps, timers and rest periods", "Guided workout sessions, summaries and streaks", "A responsive product website with pricing and support"],
+    name: "Movivate Website",
+    category: "Home Workouts · Product Website",
+    filterTags: ["TypeScript", "Next.js"],
+    stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+    desc: "The responsive website for Movivate, introducing its home workout app, guided exercises and custom programs with clear pricing, download and support paths.",
+    highlights: ["Responsive desktop and mobile website", "Workout feature and exercise player previews", "Pricing, FAQs, app downloads and support", "Consistent branding with the companion mobile app"],
     href: "https://movivate.com",
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
     accentColor: "#1cbfc4",
-    images: ["/projects/movivate-website.png", "/projects/movivate-mobile-program.png"],
-    slides: [
-      { sectionTitle: "1. Product Website", title: "A Clear Introduction to Home Workouts", desc: "The Movivate website introduces the mobile app, guided exercises and custom programs. It connects product features, pricing, app downloads and support in a consistent visual identity.", bullets: ["Responsive Next.js website", "Exercise player preview and feature sections", "Pricing, FAQs and support", "Connected website and mobile branding"] },
-      { sectionTitle: "2. iOS & Android App", title: "Guided Training at Home", desc: "The mobile app helps users explore exercises and follow programs suited to their equipment. Users can build custom routines, follow a workout player and review completed sessions.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] },
-    ],
+    images: ["/projects/movivate-website.png"],
+    slides: [{ sectionTitle: "Product Website", title: "A Clear Introduction to Home Workouts", desc: "The Movivate website introduces the mobile app, guided exercises and custom programs. It connects product features, pricing, app downloads and support in a consistent visual identity.", bullets: ["Responsive Next.js website", "Exercise player preview and feature sections", "Pricing, FAQs and support", "Connected website and mobile branding"] }],
+    featured: true,
+  },
+  {
+    id: "movivate-mobile",
+    name: "Movivate Mobile",
+    category: "Home Workouts · iOS & Android",
+    filterTags: ["React Native", "TypeScript"],
+    stack: ["React Native", "Expo", "TypeScript"],
+    desc: "The Movivate home workout app for iOS and Android, with animated exercises, custom training programs and a guided workout player.",
+    highlights: ["Animated exercise demonstrations and technique guidance", "Custom programs with sets, reps, timers and rest periods", "Guided sessions, summaries and training streaks", "Exercises organised by equipment and body area"],
+    href: "https://movivate.com/download",
+    live: true,
+    gradient: "linear-gradient(135deg, #102c3b, #17506e)",
+    accentColor: "#1cbfc4",
+    images: ["/projects/movivate-mobile-program.png"],
+    slides: [{ sectionTitle: "iOS & Android App", title: "Guided Training at Home", desc: "The mobile app helps users explore exercises and follow programs suited to their equipment. Users can build custom routines, follow a workout player and review completed sessions.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] }],
     featured: true,
   },
   {
@@ -352,15 +365,16 @@ const PROJECTS: Project[] = [
   {
     id: "realm-portfolio",
     name: "Realm Portfolio",
-    category: "Frontend · Personal Site",
+    category: "Creative Frontend · Earlier Portfolio",
     filterTags: ["React", "JavaScript"],
     stack: ["React", "Vite", "Tailwind CSS", "React Router", "React Icons"],
-    desc: "A sci-fi-inspired interactive developer portfolio built with React, Vite, and Tailwind CSS, designed as a small realm with animated transitions and a game-like experience.",
+    desc: "An earlier experimental portfolio built as a sci-fi realm. A creative frontend project exploring animated navigation, sound and game-inspired interfaces with React, Vite and Tailwind CSS.",
     highlights: [
       "Portal intro screen with custom sound and radial animation",
       "Animated realm menu with builds, skills, and developer sections",
       "Glow-based sci-fi UI with responsive layout across devices",
     ],
+    github: "https://github.com/wild-butterfly/realm-portfolio",
     href: "https://wild-butterfly.github.io/realm-portfolio/",
     live: true,
     gradient: "linear-gradient(135deg, #0a1a0e 0%, #14532d 50%, #16a34a 100%)",
@@ -638,7 +652,7 @@ function ProjectModal({
         </button>
 
         {/* Carousel */}
-        <div className={`modal-carousel${project.id === "flowody-mobile" || (project.id === "movivate" && slide === 1) ? " modal-carousel--mobile" : ""}`}>
+        <div className={`modal-carousel${project.id === "flowody-mobile" || project.id === "movivate-mobile" ? " modal-carousel--mobile" : ""}`}>
           {hasImages ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -818,7 +832,8 @@ export default function Portfolio() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.filterTags.includes(activeFilter));
 
-  const featuredProjects = filtered.filter((p) => p.featured);
+  const featuredOrder = ["flowody", "flowody-mobile", "clevermode", "movivate", "movivate-mobile", "flowody-software"];
+  const featuredProjects = filtered.filter((p) => p.featured).sort((a, b) => featuredOrder.indexOf(a.id) - featuredOrder.indexOf(b.id));
   const otherProjects = filtered.filter((p) => !p.featured);
 
   // Modal
@@ -981,7 +996,7 @@ export default function Portfolio() {
                 }
                 aria-label={`View ${project.name}`}
               >
-                <div className={`project-card-preview${project.id === "flowody-mobile" ? " project-card-preview--mobile" : ""}`}>
+                <div className={`project-card-preview${(project.id === "flowody-mobile" || project.id === "movivate-mobile") ? " project-card-preview--mobile" : ""}`}>
                   {project.images[0] ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -990,7 +1005,7 @@ export default function Portfolio() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: project.id === "flowody-mobile" ? "contain" : "cover",
+                        objectFit: (project.id === "flowody-mobile" || project.id === "movivate-mobile") ? "contain" : "cover",
                         display: "block",
                       }}
                     />
@@ -1039,7 +1054,7 @@ export default function Portfolio() {
                     }
                     aria-label={`View ${project.name}`}
                   >
-                    <div className={`project-card-preview${project.id === "flowody-mobile" ? " project-card-preview--mobile" : ""}`}>
+                    <div className={`project-card-preview${(project.id === "flowody-mobile" || project.id === "movivate-mobile") ? " project-card-preview--mobile" : ""}`}>
                       {project.images[0] ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img

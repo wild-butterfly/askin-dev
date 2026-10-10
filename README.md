@@ -37,7 +37,8 @@ A hand-crafted, production-grade portfolio built with Next.js 16, TypeScript, an
 |---|---|---|
 | [Flowody](https://flowody.com) | Job management — scheduling, quotes, invoices | React, TypeScript, Node.js, PostgreSQL |
 | [Flowody Mobile](https://flowody.com) | Field jobs, check-in and labour records | React Native, Expo, TypeScript |
-| [Movivate](https://movivate.com) | Home workout website and mobile app | Next.js, React Native, Expo, TypeScript |
+| [Movivate Website](https://movivate.com) | Responsive home workout product website | Next.js, TypeScript |
+| [Movivate Mobile](https://movivate.com/download) | Guided home workouts and custom programs | React Native, Expo, TypeScript |
 | [Flowody Software](https://flowodysoftware.com) | Studio services, case studies and enquiries | Next.js, TypeScript, Express, PostgreSQL |
 | [Clevermode](https://clevermode.com.au) | Production SaaS — printer registration, billing, AWS | Next.js, Firebase, Stripe, AWS |
 
