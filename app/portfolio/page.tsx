@@ -1,5 +1,6 @@
 "use client";
 
+import { skillGroups } from "../data/skills";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -1098,65 +1099,9 @@ export default function Portfolio() {
             </h2>
 
             {/* Grouped skills */}
-            {[
-              {
-                label: "Frontend",
-                skills: [
-                  "React",
-                  "TypeScript",
-                  "Next.js",
-                  "JavaScript (ES6+)",
-                  "Tailwind CSS",
-                  "HTML5 / CSS3",
-                  "SEO / Metadata",
-                ],
-              },
-              {
-                label: "Mobile",
-                skills: ["React Native", "Expo"],
-              },
-              {
-                label: "Backend",
-                skills: [
-                  "Node.js",
-                  "Express",
-                  "REST APIs",
-                  "Firebase",
-                  "Auth & RBAC",
-                ],
-              },
-              {
-                label: "Data",
-                skills: [
-                  "PostgreSQL",
-                  "MongoDB",
-                  "MySQL",
-                  "Firebase Firestore",
-                ],
-              },
-              {
-                label: "Cloud & DevOps",
-                skills: [
-                  "AWS (EC2, S3, CloudFront)",
-                  "Vercel",
-                  "Docker",
-                  "CI/CD",
-                  "Linux",
-                ],
-              },
-              {
-                label: "Tools",
-                skills: [
-                  "Git / GitHub",
-                  "Stripe",
-                  "Figma",
-                  "Postman",
-                  "VS Code",
-                ],
-              },
-            ].map((group, gi) => (
+            {skillGroups.map((group, gi) => (
               <div
-                key={group.label}
+                key={group.title}
                 style={{ marginTop: gi === 0 ? "3rem" : "2rem" }}
               >
                 <p
@@ -1171,7 +1116,7 @@ export default function Portfolio() {
                     fontFamily: "var(--font-mono)",
                   }}
                 >
-                  {group.label}
+                  {group.title}
                 </p>
                 <div
                   className="skills-grid"
