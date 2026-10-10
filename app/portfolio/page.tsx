@@ -1103,7 +1103,6 @@ export default function Portfolio() {
                 label: "Frontend",
                 skills: [
                   "React",
-                  "React Native / Expo",
                   "TypeScript",
                   "Next.js",
                   "JavaScript (ES6+)",
@@ -1111,6 +1110,10 @@ export default function Portfolio() {
                   "HTML5 / CSS3",
                   "SEO / Metadata",
                 ],
+              },
+              {
+                label: "Mobile",
+                skills: ["React Native", "Expo"],
               },
               {
                 label: "Backend",
