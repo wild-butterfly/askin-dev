@@ -1138,7 +1138,7 @@ export default function Portfolio() {
         <section className="section" id="about">
           <div className="about-grid">
             <div className="about-left">
-              <Image src="/team/askin-fear.webp" alt="Aşkın Fear, founder and full-stack developer, in a charcoal blazer" width={1000} height={1250} sizes="(max-width: 820px) 85vw, 400px" className="founder-portrait" />
+              <Image src="/team/askin-fear-bun.webp" alt="Aşkın Fear, founder and full-stack developer, with her hair in a bun, wearing a black blazer" width={1000} height={1250} sizes="(max-width: 820px) 85vw, 400px" className="founder-portrait" />
               <p data-reveal className="section-label">
                 About
               </p>
