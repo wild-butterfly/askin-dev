@@ -72,7 +72,7 @@ const PROJECTS: Project[] = [
     gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
     accentColor: "#f472b6",
     images: [
-      "/projects/flowody-calendar.png",
+      "/projects/flowody-calendar-team.webp",
       "/dash-laptop-Photoroom.png",
       "/dark-dash.png",
       "/dark-calendar.png",
@@ -227,11 +227,11 @@ const PROJECTS: Project[] = [
     live: true,
     gradient: "linear-gradient(135deg, #172c24, #0a5a45)",
     accentColor: "#70d9ad",
-    images: ["/projects/flowody-mobile-timesheet.png"],
+    images: ["/projects/flowody-mobile-job.webp"],
     slides: [{
       sectionTitle: "Field Workflows · Interface Preview",
       title: "Flowody in the Field",
-      desc: "A React Native and Expo app for iOS and Android that connects field teams to the Flowody platform. This timesheet design preview shows how daily labour entries and approval status are organised on a phone.",
+      desc: "A React Native and Expo app for iOS and Android that connects field teams to the Flowody platform. The preview shows a scheduled job with site details, customer contact actions and GPS check-in.",
       bullets: ["Assigned jobs and check-in and check-out", "Labour records and timesheets", "Secure session storage", "Connected to the existing API and PostgreSQL database"],
     }],
     featured: true,
@@ -248,8 +248,8 @@ const PROJECTS: Project[] = [
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
     accentColor: "#1cbfc4",
-    images: ["/projects/movivate-website.png"],
-    slides: [{ sectionTitle: "Product Website", title: "A Clear Introduction to Home Workouts", desc: "The Movivate website introduces the mobile app, guided exercises and custom programs. It connects product features, pricing, app downloads and support in a consistent visual identity.", bullets: ["Responsive Next.js website", "Exercise player preview and feature sections", "Pricing, FAQs and support", "Connected website and mobile branding"] }],
+    images: ["/projects/movivate-weekly-meal-planner.webp"],
+    slides: [{ sectionTitle: "Product Website", title: "Weekly Meal Planning on the Web", desc: "The Movivate Pro web planner lets members plan meals for the week, log what they eat and sync their nutrition records with the mobile app.", bullets: ["Weekly meal planner", "Calorie totals per meal", "Planned meals and meals already eaten", "Nutrition records synced with the mobile app"] }],
     featured: true,
   },
   {
@@ -264,8 +264,8 @@ const PROJECTS: Project[] = [
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
     accentColor: "#1cbfc4",
-    images: ["/projects/movivate-mobile-program.png"],
-    slides: [{ sectionTitle: "iOS & Android App", title: "Guided Training at Home", desc: "The mobile app helps users explore exercises and follow programs suited to their equipment. Users can build custom routines, follow a workout player and review completed sessions.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] }],
+    images: ["/projects/movivate-mobile-program-builder.webp"],
+    slides: [{ sectionTitle: "iOS & Android App", title: "Custom Training Programs", desc: "The mobile program builder lets members choose a cover, add exercises and see estimated workout duration and calories before starting a guided session.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] }],
     featured: true,
   },
   {
@@ -1006,7 +1006,7 @@ export default function Portfolio() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: (project.id === "flowody-mobile" || project.id === "movivate-mobile") ? "contain" : "cover",
+                        objectFit: (project.id === "flowody" || project.id === "flowody-mobile" || project.id === "movivate-mobile") ? "contain" : "cover",
                         display: "block",
                       }}
                     />
