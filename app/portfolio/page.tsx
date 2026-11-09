@@ -1,5 +1,6 @@
 "use client";
 
+import { projectGalleries } from "../data/project-galleries";
 import { skillGroups } from "../data/skills";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,6 +32,8 @@ type ProjectSlide = {
   title: string;
   desc: string;
   bullets: string[];
+  imageAlt?: string;
+  label?: string;
 };
 
 type Project = {
@@ -53,6 +56,14 @@ type Project = {
 };
 
 /* ─── Data ──────────────────────────────────────────────── */
+function projectGallery(id: keyof typeof projectGalleries): Pick<Project, "images" | "slides"> {
+  const items = projectGalleries[id];
+  return {
+    images: items.map((item) => `/projects/${item.file}`),
+    slides: items.map((item, index) => ({ ...item, sectionTitle: `${String(index + 1).padStart(2, "0")} · ${item.label}` })),
+  };
+}
+
 const PROJECTS: Project[] = [
   {
     id: "flowody",
@@ -64,76 +75,15 @@ const PROJECTS: Project[] = [
     highlights: [
       "Shared calendar for job scheduling and team assignments",
       "Customer records, quotes and invoices connected to each job",
-      "Role-based dashboard views for managers, staff, and admins",
+      "Combined invoicing, payment receipts and branded documents",
+      "Customer email templates, sender options and renewal reminders",
       "Shared backend connecting the web platform and field app",
     ],
     href: "https://flowody.com",
     live: true,
     gradient: "linear-gradient(135deg, #1a1020 0%, #831843 50%, #db2777 100%)",
     accentColor: "#f472b6",
-    images: [
-      "/projects/flowody-calendar-team.webp",
-      "/dash-laptop-Photoroom.png",
-      "/dark-dash.png",
-      "/dark-calendar.png",
-      "/templates.png",
-    ],
-    slides: [
-      {
-        sectionTitle: "1. Scheduling & Workforce Coordination",
-        title: "Smart Team Scheduling",
-        desc: "Flowody provides a visual calendar that allows teams to organise work across multiple technicians in a single timeline. Managers can easily schedule jobs, track assignments, and see availability across the team. Each job appears as a coloured card within the timeline, making it easy to understand job status and progress at a glance.",
-        bullets: [
-          "Multi-technician timeline view",
-          "Visual job scheduling",
-          "Colour-coded task status indicators",
-          "Integrated job search and filtering",
-          "Real-time updates for team coordination",
-        ],
-      },
-      {
-        sectionTitle: "2. Operations Dashboard",
-        title: "Operational Insights at a Glance",
-        desc: "The Flowody dashboard provides a real-time overview of business activity and job progress. The interface was designed to give managers immediate visibility into the operational pipeline. Users can quickly see how work is progressing through each stage — and by consolidating this information into a single view, business owners can understand their workflow health without navigating through multiple screens.",
-        bullets: [
-          "Pending work",
-          "Quotes in preparation",
-          "Scheduled jobs",
-          "Active work in progress",
-          "Completed jobs",
-          "Invoices issued and payments received",
-        ],
-      },
-      {
-        sectionTitle: "3. Dark Mode Experience",
-        title: "Dark Mode Interface",
-        desc: "Flowody includes a fully designed dark mode interface to support extended usage and reduce eye strain. The dark theme maintains the same information hierarchy and functionality while adapting the colour palette for improved contrast in low-light environments. This design ensures that teams working long hours or in darker environments can comfortably manage their workflow without compromising usability.",
-        bullets: [],
-      },
-      {
-        sectionTitle: "4. Mobile Workflow Access",
-        title: "Mobile-Friendly Workflow Management",
-        desc: "Flowody is designed to work seamlessly across devices, enabling technicians and field staff to access their work from anywhere. This ensures that teams working in the field remain connected to the system without needing to return to the office.",
-        bullets: [
-          "View assigned jobs",
-          "Access customer information",
-          "Track task progress",
-          "Review schedules on the go",
-        ],
-      },
-      {
-        sectionTitle: "5. Customisable Quote & Invoice Templates",
-        title: "Customisable Business Documents",
-        desc: "Flowody includes a flexible document template system that allows businesses to generate professional quotes and invoices tailored to their brand. Through a visual editor, users can customise document layouts and instantly preview the final result. This feature ensures that all customer-facing documents maintain a consistent and professional appearance.",
-        bullets: [
-          "Live PDF preview",
-          "Custom brand colours and styling",
-          "Configurable document sections",
-          "Editable company and customer information",
-        ],
-      },
-    ],
-    placeholderSlides: 4,
+    ...projectGallery("flowody"),
     featured: true,
   },
   {
@@ -221,19 +171,13 @@ const PROJECTS: Project[] = [
     category: "Field Team App · iOS & Android",
     filterTags: ["React Native", "TypeScript"],
     stack: ["React Native", "Expo", "TypeScript", "Node.js", "PostgreSQL"],
-    desc: "The companion app to Flowody, helping tradespeople access assigned jobs and record work from the field through the same backend as the web platform.",
+    desc: "The Flowody field app connects assigned visits, site safety forms, job files and labour records with the office.",
     highlights: ["Assigned jobs and job information on a phone", "Check-in and check-out workflows", "Labour records and timesheets", "Shared Flowody account and job data"],
     href: "https://flowody.com",
     live: true,
     gradient: "linear-gradient(135deg, #172c24, #0a5a45)",
     accentColor: "#70d9ad",
-    images: ["/projects/flowody-mobile-job.webp"],
-    slides: [{
-      sectionTitle: "Field Workflows · Interface Preview",
-      title: "Flowody in the Field",
-      desc: "A React Native and Expo app for iOS and Android that connects field teams to the Flowody platform. The preview shows a scheduled job with site details, customer contact actions and GPS check-in.",
-      bullets: ["Assigned jobs and check-in and check-out", "Labour records and timesheets", "Secure session storage", "Connected to the existing API and PostgreSQL database"],
-    }],
+    ...projectGallery("flowody-mobile"),
     featured: true,
   },
   {
@@ -242,14 +186,13 @@ const PROJECTS: Project[] = [
     category: "Home Workouts · Product Website",
     filterTags: ["TypeScript", "Next.js"],
     stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    desc: "The responsive website for Movivate, introducing its home workout app, guided exercises and custom programs with clear pricing, download and support paths.",
+    desc: "The public product website and signed-in Movivate workspace, with a Free and Pro program guide, synced training plans and weekly meal planning.",
     highlights: ["Responsive desktop and mobile website", "Workout feature and exercise player previews", "Pricing, FAQs, app downloads and support", "Consistent branding with the companion mobile app"],
     href: "https://movivate.com",
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
     accentColor: "#1cbfc4",
-    images: ["/projects/movivate-weekly-meal-planner.webp"],
-    slides: [{ sectionTitle: "Product Website", title: "Weekly Meal Planning on the Web", desc: "The Movivate Pro web planner lets members plan meals for the week, log what they eat and sync their nutrition records with the mobile app.", bullets: ["Weekly meal planner", "Calorie totals per meal", "Planned meals and meals already eaten", "Nutrition records synced with the mobile app"] }],
+    ...projectGallery("movivate"),
     featured: true,
   },
   {
@@ -258,14 +201,13 @@ const PROJECTS: Project[] = [
     category: "Home Workouts · iOS & Android",
     filterTags: ["React Native", "TypeScript"],
     stack: ["React Native", "Expo", "TypeScript"],
-    desc: "The Movivate home workout app for iOS and Android, with animated exercises, custom training programs and a guided workout player.",
-    highlights: ["Animated exercise demonstrations and technique guidance", "Custom programs with sets, reps, timers and rest periods", "Guided sessions, summaries and training streaks", "Exercises organised by equipment and body area"],
+    desc: "A training and nutrition app for iOS and Android. Plan the week, build workouts, discover guided programs and keep a daily food log.",
+    highlights: ["Weekly plans for workouts, walks, sport and rest", "Custom routines with sets, reps and timers", "Free and Pro guided programs", "Nutrition logging and Pro meal planning"],
     href: "https://movivate.com/download",
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
     accentColor: "#1cbfc4",
-    images: ["/projects/movivate-mobile-program-builder.webp"],
-    slides: [{ sectionTitle: "iOS & Android App", title: "Custom Training Programs", desc: "The mobile program builder lets members choose a cover, add exercises and see estimated workout duration and calories before starting a guided session.", bullets: ["React Native and Expo", "Animated exercise library and technique guidance", "Custom routines and guided workout timers", "Session summaries and training streaks"] }],
+    ...projectGallery("movivate-mobile"),
     featured: true,
   },
   {
@@ -618,6 +560,7 @@ function ProjectModal({
   onClose: () => void;
 }) {
   const [slide, setSlide] = useState(0);
+  const hasFeatureNav = project.slides?.some((item) => Boolean(item.label));
   const hasImages = project.images.length > 0;
   const slideCount = hasImages
     ? Math.max(project.images.length, project.slides?.length ?? 0)
@@ -653,12 +596,12 @@ function ProjectModal({
         </button>
 
         {/* Carousel */}
-        <div className={`modal-carousel${project.id === "flowody-mobile" || project.id === "movivate-mobile" ? " modal-carousel--mobile" : ""}`}>
+        <div className={`modal-carousel${project.id === "flowody-mobile" || project.id === "movivate-mobile" ? " modal-carousel--mobile" : ""}${hasFeatureNav ? " modal-carousel--showcase" : ""}`}>
           {hasImages ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.images[slide]}
-              alt={`${project.name} screenshot ${slide + 1}`}
+              alt={project.slides?.[slide]?.imageAlt ?? `${project.name} screenshot ${slide + 1}`}
             />
           ) : (
             <div className="modal-carousel-slide">
@@ -686,7 +629,7 @@ function ProjectModal({
               >
                 ›
               </button>
-              <div className="carousel-dots">
+              {!hasFeatureNav && <div className="carousel-dots">
                 {Array.from({ length: slideCount }).map((_, i) => (
                   <button
                     key={i}
@@ -695,10 +638,20 @@ function ProjectModal({
                     aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
-              </div>
+              </div>}
             </>
           )}
         </div>
+
+        {hasFeatureNav && (
+          <div className="showcase-slide-nav" role="group" aria-label={`${project.name} screenshots`}>
+            {project.slides?.map((item, index) => (
+              <button key={item.sectionTitle} type="button" aria-pressed={index === slide} onClick={() => setSlide(index)}>
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Body */}
         <div className="modal-body">
@@ -833,7 +786,7 @@ export default function Portfolio() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.filterTags.includes(activeFilter));
 
-  const featuredOrder = ["flowody", "flowody-mobile", "clevermode", "movivate", "movivate-mobile", "flowody-software"];
+  const featuredOrder = ["flowody", "flowody-mobile", "movivate", "movivate-mobile", "clevermode", "flowody-software"];
   const featuredProjects = filtered.filter((p) => p.featured).sort((a, b) => featuredOrder.indexOf(a.id) - featuredOrder.indexOf(b.id));
   const otherProjects = filtered.filter((p) => !p.featured);
 

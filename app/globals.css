@@ -1347,3 +1347,24 @@ body {
 .founder-portrait { display: block; width: min(100%, 400px); height: auto; border-radius: 20px; border: 1px solid var(--border); }
 .project-card-preview--mobile { background: linear-gradient(135deg, #163329, #596957); }
 .modal-carousel--mobile > img { object-fit: contain; }
+
+.modal-carousel--showcase {
+  aspect-ratio: auto;
+  height: clamp(310px, 55svh, 560px);
+  padding: 14px 0;
+  background: radial-gradient(ellipse at center, #1c3b4b, var(--bg) 74%);
+}
+.modal-carousel--showcase > img { width: 100%; max-width: calc(100% - 100px); margin-inline: auto; }
+.modal-carousel--showcase.modal-carousel--mobile > img { width: auto; border-radius: 12px; }
+.showcase-slide-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 14px 18px 0; }
+.showcase-slide-nav button {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-1);
+  font: inherit;
+  font-size: 0.83rem;
+  cursor: pointer;
+}
+.showcase-slide-nav button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-dim); }
