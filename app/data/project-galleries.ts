@@ -159,7 +159,7 @@ export const projectGalleries = {
     },
     {
       label: "Nutrition",
-      file: "movivate-mobile-nutrition.webp",
+      file: "movivate-mobile-nutrition-log.webp",
       title: "Log meals and see the daily totals",
       desc: "Log breakfast, lunch, dinner or snacks and see estimated calories, protein, carbohydrates and fat for the day. Pro adds weekly meal planning, and signed-in members can view the synced log on mobile and web.",
       imageAlt: "Movivate Nutrition screen with a date selector, calorie and macro summary, and meal sections",
