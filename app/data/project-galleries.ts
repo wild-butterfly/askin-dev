@@ -291,7 +291,7 @@ export const projectGalleries = {
         "Use role-based access for customer, scheduling and quoting tools.",
       ],
       width: 780,
-      height: 1170,
+      height: 1300,
       imageNote: "Mobile interface preview with sample data.",
     },
   ],
