@@ -187,8 +187,8 @@ const PROJECTS: Project[] = [
     category: "Home Workouts · Product Website",
     filterTags: ["TypeScript", "Next.js"],
     stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    desc: "The public product website and signed-in Movivate workspace, with a Free and Pro program guide, synced training plans and weekly meal planning.",
-    highlights: ["Responsive desktop and mobile website", "Workout feature and exercise player previews", "Pricing, FAQs, app downloads and support", "Consistent branding with the companion mobile app"],
+    desc: "The Movivate website includes a signed-in desktop workspace for weekly training, Free and Pro workouts, custom programs and nutrition.",
+    highlights: ["Weekly training plans with workouts, walks, sports and rest", "Free and Pro workout library and exercise search", "Custom workout creation and synced plans", "Weekly meal planning and a daily food log"],
     href: "https://movivate.com",
     live: true,
     gradient: "linear-gradient(135deg, #102c3b, #17506e)",
@@ -966,7 +966,7 @@ export default function Portfolio() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: (project.id === "flowody" || project.id === "flowody-mobile" || project.id === "movivate-mobile") ? "contain" : "cover",
+                        objectFit: (project.id === "flowody" || project.id === "flowody-mobile" || project.id === "movivate" || project.id === "movivate-mobile") ? "contain" : "cover",
                         display: "block",
                       }}
                     />
