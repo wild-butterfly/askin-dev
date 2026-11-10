@@ -202,7 +202,7 @@ const PROJECTS: Project[] = [
     category: "Home Workouts · iOS & Android",
     filterTags: ["React Native", "TypeScript"],
     stack: ["React Native", "Expo", "TypeScript"],
-    desc: "A training and nutrition app for iOS and Android. Plan the week, create a custom program from individual exercises or add a ready-made workout from the library, and keep a daily food log.",
+    desc: "A training and nutrition app for iOS and Android. Plan the week, follow guided workouts with animated exercises and timers, and review activity and nutrition by day, week or month.",
     highlights: ["Weekly plans for workouts, walks, sport and rest", "Custom program creator with exercise selection, reps and timers", "Add a Free or Pro library workout to a planned day", "Nutrition logging and Pro meal planning"],
     href: "https://movivate.com/download",
     live: true,
