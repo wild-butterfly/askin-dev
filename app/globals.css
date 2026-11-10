@@ -1368,3 +1368,6 @@ body {
   cursor: pointer;
 }
 .showcase-slide-nav button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-dim); }
+
+.showcase-image-details { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 14px; color: var(--text-1); font-size: 0.8rem; }
+.showcase-image-details a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }

@@ -33,6 +33,7 @@ type ProjectSlide = {
   desc: string;
   bullets: string[];
   imageAlt?: string;
+  imageNote?: string;
   label?: string;
 };
 
@@ -71,7 +72,7 @@ const PROJECTS: Project[] = [
     category: "Job Management · Web Platform",
     filterTags: ["React", "TypeScript"],
     stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Express"],
-    desc: "Job management platform for service businesses, bringing scheduling, quotes, customer records, job tracking and invoices into one connected workspace.",
+    desc: "Job management for service businesses, from the first booking request and quote to field work, job costs, invoicing and payment.",
     highlights: [
       "Shared calendar for job scheduling and team assignments",
       "Customer records, quotes and invoices connected to each job",
@@ -171,7 +172,7 @@ const PROJECTS: Project[] = [
     category: "Field Team App · iOS & Android",
     filterTags: ["React Native", "TypeScript"],
     stack: ["React Native", "Expo", "TypeScript", "Node.js", "PostgreSQL"],
-    desc: "The Flowody field app connects assigned visits, site safety forms, job files and labour records with the office.",
+    desc: "The iOS and Android field app connects bookings, attendance, site paperwork, timesheets and crew updates to the office. Owners and admins can also schedule work and prepare quotes.",
     highlights: ["Assigned jobs and job information on a phone", "Check-in and check-out workflows", "Labour records and timesheets", "Shared Flowody account and job data"],
     href: "https://flowody.com",
     live: true,
@@ -662,6 +663,12 @@ function ProjectModal({
               </p>
               <h2 className="modal-title">{project.slides[slide].title}</h2>
               <p className="modal-desc">{project.slides[slide].desc}</p>
+              {hasFeatureNav && (
+                <p className="showcase-image-details">
+                  {project.slides[slide].imageNote && <span>{project.slides[slide].imageNote}</span>}
+                  <a href={project.images[slide]} target="_blank" rel="noopener noreferrer">Open full-size image ↗</a>
+                </p>
+              )}
               {project.slides[slide].bullets.length > 0 && (
                 <ul className="modal-highlights">
                   {project.slides[slide].bullets.map((b) => (
