@@ -1386,3 +1386,4 @@ body {
   min-height: 0;
   object-fit: contain;
 }
+.modal-carousel:not(.modal-carousel--mobile) .showcase-image-pair { width: calc(100% - 92px); }
