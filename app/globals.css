@@ -1371,3 +1371,18 @@ body {
 
 .showcase-image-details { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 14px; color: var(--text-1); font-size: 0.8rem; }
 .showcase-image-details a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
+
+.showcase-image-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(6px, 2vw, 16px);
+  width: min(500px, calc(100% - 92px));
+  height: 100%;
+  margin-inline: auto;
+}
+.showcase-image-pair img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}

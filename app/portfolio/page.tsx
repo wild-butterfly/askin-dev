@@ -1,6 +1,6 @@
 "use client";
 
-import { projectGalleries } from "../data/project-galleries";
+import { projectGalleries, type ShowcaseSlide } from "../data/project-galleries";
 import { skillGroups } from "../data/skills";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,6 +34,7 @@ type ProjectSlide = {
   bullets: string[];
   imageAlt?: string;
   imageNote?: string;
+  companion?: ShowcaseSlide["companion"];
   label?: string;
 };
 
@@ -561,6 +562,7 @@ function ProjectModal({
   onClose: () => void;
 }) {
   const [slide, setSlide] = useState(0);
+  const companion = project.slides?.[slide]?.companion;
   const hasFeatureNav = project.slides?.some((item) => Boolean(item.label));
   const hasImages = project.images.length > 0;
   const slideCount = hasImages
@@ -598,7 +600,14 @@ function ProjectModal({
 
         {/* Carousel */}
         <div className={`modal-carousel${project.id === "flowody-mobile" || project.id === "movivate-mobile" ? " modal-carousel--mobile" : ""}${hasFeatureNav ? " modal-carousel--showcase" : ""}`}>
-          {hasImages ? (
+          {companion ? (
+            <div className="showcase-image-pair">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.images[slide]} alt={project.slides?.[slide]?.imageAlt ?? ""} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/projects/${companion.file}`} alt={companion.imageAlt} />
+            </div>
+          ) : hasImages ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.images[slide]}
@@ -666,7 +675,8 @@ function ProjectModal({
               {hasFeatureNav && (
                 <p className="showcase-image-details">
                   {project.slides[slide].imageNote && <span>{project.slides[slide].imageNote}</span>}
-                  <a href={project.images[slide]} target="_blank" rel="noopener noreferrer">Open full-size image ↗</a>
+                  <a href={project.images[slide]} target="_blank" rel="noopener noreferrer">{companion ? "Open first image ↗" : "Open full-size image ↗"}</a>
+                  {companion && <a href={`/projects/${companion.file}`} target="_blank" rel="noopener noreferrer">Open second image ↗</a>}
                 </p>
               )}
               {project.slides[slide].bullets.length > 0 && (

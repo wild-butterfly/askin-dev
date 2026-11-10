@@ -5,6 +5,7 @@ export type ShowcaseSlide = {
   desc: string;
   imageAlt: string;
   imageNote?: string;
+  companion?: { file: string; imageAlt: string; width: number; height: number };
   bullets: string[];
   width: number;
   height: number;
@@ -373,44 +374,36 @@ export const projectGalleries = {
       height: 1848,
     },
     {
-      label: "Free Workouts",
+      label: "Free & Pro Workouts",
       file: "movivate-mobile-free-workouts.webp",
-      title: "Find a Free workout in Explore",
-      desc: "Open Explore and select Free to see workouts such as 7-Day Low-Impact Start. Browse the program cards by equipment and compare training length and difficulty.",
-      imageAlt: "Movivate Explore with the Free tab selected and the 7-Day Low-Impact Start program visible",
-      bullets: ["Free programs work without an account.", "Filter by equipment to find a program that suits what you have."],
+      title: "Browse Free and Pro workouts in Explore",
+      desc: "Switch between Free programs like 7-Day Low-Impact Start and Pro programs like 30-Day Bodyweight Full Body. Compare session length, difficulty and equipment before choosing.",
+      imageAlt: "Movivate Explore with Free selected and the 7-Day Low-Impact Start program visible",
       width: 780,
       height: 1602,
-    },
-    {
-      label: "Pro Workouts",
-      file: "movivate-mobile-pro-workouts.webp",
-      title: "Explore more structured Pro programs",
-      desc: "Switch to the Pro tab to see programs such as 30-Day Bodyweight Full Body. The cards show the plan length, session time, equipment and difficulty before you open a program.",
-      imageAlt: "Movivate Explore with the Pro tab selected and a 30-Day Bodyweight Full Body program card",
-      bullets: ["Browse Pro programs in Explore. A Pro subscription unlocks their sessions."],
-      width: 780,
-      height: 1602,
+      companion: {
+        file: "movivate-mobile-pro-workouts.webp",
+        imageAlt: "Movivate Explore with Pro selected and a 30-Day Bodyweight Full Body program card",
+        width: 780,
+        height: 1602,
+      },
+      bullets: ["Free programs work without an account. A Pro subscription unlocks Pro sessions.", "Filter either library by equipment."],
     },
     {
       label: "Add from Library",
       file: "movivate-mobile-workout-picker.webp",
-      title: "Add a library workout to your weekly plan",
-      desc: "In the Pro weekly planner, open a workout day and tap Choose a workout. Search My Programs, Free or Pro, then select a program to see its sessions.",
+      title: "Choose a program and add a session to your plan",
+      desc: "On a workout day in the Pro weekly planner, tap Choose a workout. Browse My Programs, Free or Pro, then tap Use beside the session you want to add to that day.",
       imageAlt: "Movivate Choose a workout screen with My Programs, Free and Pro tabs and a list of Free programs",
-      bullets: ["Find a workout by name or switch tabs to browse", "Link one of your own workouts to keep the day in sync with your edits in My Programs"],
       width: 390,
       height: 844,
-    },
-    {
-      label: "Choose a Session",
-      file: "movivate-mobile-choose-session.webp",
-      title: "Pick the session you want to add",
-      desc: "After choosing a program, tap Use beside a session. Movivate copies that session into your selected workout day.",
-      imageAlt: "Movivate Choose a session screen for 7-Day Low-Impact Start with three Use buttons",
-      bullets: ["Review the exercise count and estimated duration before selecting a session."],
-      width: 780,
-      height: 950,
+      companion: {
+        file: "movivate-mobile-choose-session.webp",
+        imageAlt: "Movivate Choose a session screen for 7-Day Low-Impact Start with three Use buttons",
+        width: 780,
+        height: 950,
+      },
+      bullets: ["Check the exercise count and estimated duration before choosing a session.", "Link your own saved workout to carry future edits through to the planned day."],
     },
     {
       label: "Create a Program",
